@@ -7,6 +7,7 @@ using System.Xml.Linq;
 
 namespace ConsoleApplication1
 {
+    //Symbolsk test ændring for at få ændringen til at slå igennem.
     class Datahandler
     {
         int maxsymptomantal;
