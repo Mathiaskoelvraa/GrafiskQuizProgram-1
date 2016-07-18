@@ -1,0 +1,66 @@
+<!DOCTYPE HTML5>
+<html>
+
+<head>
+    <style>
+        form * {
+            display: block;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="result"></div>
+    <!-- <form onsubmit="downloadd(this.['name'].value, this['text'].value)"> -->
+    <form id='form' onload="loadatstart()"> </form>
+    <a href="file:///C:/Users/Anders/Documents/puzzle_quiz_vs2.html"> dfsdf </a>
+    
+    <script type="text/javascript">
+        function loadatstart() { //filename, text) {
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.id = 'name';
+            input.value = 'test.txt';
+            document.getElementById('form').appendChild(input);
+            
+            var textarea = document.createElement('textarea');
+            textarea.id = 'text';
+            document.getElementById('form').appendChild(textarea);
+            var input2 = document.createElement('input');
+            input2.type = 'submit';
+            input2.value = ' <em> slkjsdlj </em>';
+            window.document.getElementById('form').addEventListener('submit', function () {
+                downloadd(document.getElementById('name').value, document.getElementById('text').value)
+            });
+            //BEMÆRK oprindeligt kaldte vi funktonen downloadd her, nu indfører vi et ekstra lag af en anonym funktion som vi som en delegate
+            //kan give til eventlisteneren, uden at funtionen affyres.
+            //note: the event 'click causes us to fire no matter where the cursor is.
+            document.getElementById('form').appendChild(input2); //document and window.document identical. document is DOM
+            // window.form.input2.onsubmit = downloadd(document.getElementById('name').value, document.getElementById('text').value);
+            //   window.document.getElementById('form').addEventListener('submit', downloadd(document.getElementById('name').value, document.getElementById('text').value));
+            //     window.addEventListener('submit', downloadd(document.getElementById('name').value, document.getElementById('text').value).bind(this));
+        }
+
+        function downloadd(filename, text) {
+            var element = document.createElement('a');
+            var text2 = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text2));
+            // element.setAttribute('href', 'data:application/octet-stream;charset=utf-16le;base64,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+            //element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            //document.body.removeChild(element);
+            element.textContent = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+            
+            //Ny kode
+            document.implementation.createDocument("", "", null);
+            XMLDocument.load("xmldoc.xml");
+            
+        }
+        loadatstart();
+    </script>
+</body>
+
+</html>

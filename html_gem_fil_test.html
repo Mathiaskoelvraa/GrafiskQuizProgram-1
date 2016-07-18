@@ -1,0 +1,34 @@
+<!DOCTYPE HTML5>
+<html>
+
+<head>
+    <style>
+        form * {
+  display: block;
+  margin: 10px;
+}
+    </style></head>
+
+<body>
+    <script type="text/javascript">
+        function downloadd(){//filename, text) {
+            var element = document.createElement('a');
+             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(this['text'].value));
+          //  element.setAttribute('href', 'data:application/octet-stream;charset=utf-16le;base64,' + encodeURIComponent(text));
+            element.setAttribute('download', this['name'].value);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+    <div id="result"></div>
+   <!-- <form onsubmit="downloadd(this.['name'].value, this['text'].value)"> -->
+    <form onsubmit="downloadd()">
+        <input type="text" name="name" value="test.txt" />
+        <textarea name="text"></textarea>
+        <input type="submit" value="Download" />
+    </form>
+</body>
+
+</html>
